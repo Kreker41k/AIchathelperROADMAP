@@ -1,0 +1,135 @@
+.NonProfessions {
+    position: absolute;
+    width: 97vw;
+    height: 72vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    pointer-events: auto;
+    z-index: 1;
+
+    &.show {
+        animation: fadeIn 0.5s ease forwards;
+        display: block;
+    }
+
+    &.hide {
+        animation: fadeOut 0.5s ease forwards;
+        pointer-events: none;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+        display: block;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+        display: none;
+    }
+}
+
+.Professions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5rem;
+    width: 100%;
+    height: 41rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+@mixin Profcon($bgcolor) {
+    position: relative;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: #e0e0e0;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, $bgcolor 0%, #e0e0e0 100%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        border-radius: 1rem;
+        pointer-events: none;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+
+    > * {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.Profcon {
+    &:nth-child(1) {
+        @include Profcon(#667eea);
+    }
+
+    &:nth-child(2) {
+        @include Profcon(#66ea75);
+    }
+
+    &:nth-child(3) {
+        @include Profcon(#ea9266);
+    }
+
+    &:nth-child(4) {
+        @include Profcon(#95c8ed);
+    }
+
+    &:nth-child(5) {
+        @include Profcon(#930505);
+    }
+
+    &:nth-child(6) {
+        @include Profcon(#9b5f3a);
+    }
+
+    &:nth-child(7) {
+        @include Profcon(#944fcc);
+    }
+
+    &:nth-child(8) {
+        @include Profcon(#eb4141);
+    }
+}
+
+.Professionbtn {
+    background-color: #f0f0f0;
+    border: 1px solid #aaa;
+    border-radius: 1rem;
+    margin-left: 1rem;
+    padding: 0.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: #e0e0e0;
+    }
+}

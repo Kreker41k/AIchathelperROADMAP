@@ -1,0 +1,212 @@
+@mixin Navbtn {
+    width: 25rem;
+    height: 5rem;
+    background-color: #2a2a2a;
+    border: 2px solid #555;
+    border-radius: 1rem;
+    color: #ccc;
+    font-size: 25px;
+    cursor: pointer;
+    transition: ease 0.5s;
+
+    &:hover {
+        font-size: 32px;
+        background-color: #3a3a3a;
+        border: 2px solid #777;
+        box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@mixin btn {
+    width: 30rem;
+    height: 10rem;
+    background-color: #2a2a2a;
+    border: 2px solid #444;
+    border-radius: 1rem;
+    color: #ccc;
+    font-size: 25px;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: ease 0.5s;
+
+    &:hover {
+        font-size: 30px;
+        background-color: #3a3a3a;
+        border: 2px solid #666;
+    }
+}
+
+.App {
+    width: 97vw;
+    height: 95vh;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    background-color: #1a1a1a;
+    height: 10rem;
+    border-radius: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 30rem;
+}
+
+.Headerbtn {
+    @include Navbtn();
+}
+
+main {
+    display: flex;
+    background-color: #1a1a1a;
+    height: 45rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.Chat {
+    display: flex;
+    flex-direction: column;
+    background-color: #111;
+    margin-top: 2rem;
+    padding: 1rem;
+    width: 97.5%;
+    height: calc(100vh - 20rem);
+    max-height: 45rem;
+    border-radius: 1rem;
+    border: 0.5rem solid #1a1a1a;
+    overflow: hidden;
+}
+
+.Chatexport {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 2rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: #1a1a1a;
+        border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: #444;
+        border-radius: 4px;
+        
+        &:hover {
+            background: #555;
+        }
+    }
+    
+    scrollbar-width: thin;
+    scrollbar-color: #444 #1a1a1a;
+}
+
+.Chatinput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 2rem;
+    flex-shrink: 0;
+}
+
+input {
+    width: 90rem;
+    height: 4rem;
+    font-size: 16px;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 0.5rem solid #1a1a1a;
+    background-color: #181818;
+    color: #ccc;
+    cursor: auto;
+    transition: ease 0.3s;
+
+    &:focus {
+        border-color: #333;
+        outline: none;
+    }
+    
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.Selectbtn {
+    background-color: #1a1a1a;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: ease 0.3s;
+    flex-shrink: 0;
+
+    img {
+        width: 4rem;
+        height: 4rem;
+        filter: invert(0.8);
+    }
+
+    &:hover {
+        background-color: #2a2a2a;
+    }
+    
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        
+        &:hover {
+            background-color: #1a1a1a;
+        }
+    }
+}
+
+.ROADmapbtn {
+    position: absolute;
+    z-index: 2;
+    @include btn();
+
+    &.show {
+        animation: fadeIn 0.5s ease forwards;
+    }
+
+    &.hide {
+        animation: fadeOut 0.5s ease forwards;
+        pointer-events: none;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+        display: none;
+    }
+}
